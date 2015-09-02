@@ -231,7 +231,7 @@ void initCanvas(int w, int h)
 
    glutInitWindowSize (w, h);
    glutInitWindowPosition (200, 200);
-   glutCreateWindow ("Canvas 2D – Jogo Nave");
+   glutCreateWindow ("Canvas 2D");
 
    inicializa();
 
