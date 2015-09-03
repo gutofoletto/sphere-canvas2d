@@ -20,27 +20,27 @@ public:
         this->z = z;
     }
 
-    Vetor3D translate(Vetor3D v){
-        return Vetor3D(
-            this->x += v.x,
-            this->y += v.y,
-            this->z += v.z
+    Vector3D translate(Vector3D v){
+        return Vector3D(
+            this->x + v.x,
+            this->y + v.y,
+            this->z + v.z
         );
     }
 
-    Vetor3D spinOnX(float angle){
-        return Vetor3D(
+    Vector3D spinOnX(float angle){
+        return Vector3D(
             this->x,
-            this->y = (cos(angle)*y) - (sin(angle)*z);
-            this->z = (sin(angle)*y) + (cos(angle)*z);
+            this->y = (cos(angle)*y) - (sin(angle)*z),
+            this->z = (sin(angle)*y) + (cos(angle)*z)
         );
     }
 
-    Vetor3D spinOnY(float angle){
-        return Vetor3D(
-            this->x = (cos(angle)*x) - (sin(angle)*z);
+    Vector3D spinOnY(float angle){
+        return Vector3D(
+            this->x = (cos(angle)*x) - (sin(angle)*z),
             this->y,
-            this->z = (sin(angle)*y) + (cos(angle)*z);
+            this->z = (sin(angle)*y) + (cos(angle)*z)
         );
     }
 };

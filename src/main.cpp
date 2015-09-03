@@ -3,13 +3,18 @@
 #include <stdlib.h>
 
 #include "gl_canvas2d.h"
+#include "sphere.h"
 
 const int w = 800;
 const int h = 600;
 
+Sphere *bola = NULL;
 
 int main(void) {
     initCanvas(w, h);
+
+    bola = new Sphere();
+
     runCanvas();
 }
 
@@ -17,7 +22,8 @@ int main(void) {
 //globais que podem ser setadas pelo metodo keyboard()
 void render()
 {
-
+    bola->transformSphere();
+    bola->draw();
 }
 
 //funcao chamada toda vez que uma tecla for pressionada
