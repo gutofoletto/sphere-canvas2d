@@ -28,19 +28,27 @@ public:
         );
     }
 
-    Vector3D spinOnX(float angle){
+    Vector3D translateZ(float z){
         return Vector3D(
             this->x,
-            this->y = (cos(angle)*y) - (sin(angle)*z),
-            this->z = (sin(angle)*y) + (cos(angle)*z)
+            this->y,
+            this->z + z
+        );
+    }
+
+    Vector3D spinOnX(float angle){
+        return Vector3D(
+            x,
+            (cos(angle)*y) - (sin(angle)*z),
+            (sin(angle)*y) + (cos(angle)*z)
         );
     }
 
     Vector3D spinOnY(float angle){
         return Vector3D(
-            this->x = (cos(angle)*x) - (sin(angle)*z),
-            this->y,
-            this->z = (sin(angle)*y) + (cos(angle)*z)
+            (cos(angle)*x) - (sin(angle)*z),
+            y,
+            (sin(angle)*y) + (cos(angle)*z)
         );
     }
 };
