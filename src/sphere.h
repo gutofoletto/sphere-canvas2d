@@ -10,7 +10,7 @@ using namespace std;
 
 class Sphere{
 public:
-    Vector3D center; // centroide da esfera
+    Vector3D position; // centroide da esfera
     vector< vector<Vector3D> > points; //pontos da esfera
     vector< vector<Vector3D> > aux; // clone de pontos para transformação
     float r; // raio da esfera
@@ -21,7 +21,7 @@ public:
 
     // Construtor da esfera, seta valores para as variaveis
     Sphere(float r, int s){
-        this->center = Vector3D(0.0f, 0.0f, 0.0f);
+        this->position = Vector3D(0.0f, 0.0f, 0.0f);
         this->r = r;
         this->d = 50.0f;
         this->step = s;
@@ -47,6 +47,7 @@ public:
     void draw(){
         // Loop que percorre as linhas e colunas do array
         // para desenhar as linhas que formam as esfera
+        color(0,0,0);
         for(int i = 0; i < aux.size()-1; i++){
             for(int j = 0; j < aux[0].size()-1; j++){
                 // desenha linha horizontal
@@ -75,25 +76,26 @@ public:
     }
 
     void transform(Vector3D trans = Vector3D(300.0f, 300.0f, 300.0f), bool axis = true){
+        this->position = trans;
         // Loop que percorre as linhas e colunas do array
         // para aplicar transformações nas coordenadas
         for(int i = 0; i < aux.size(); i++){
             for(int j = 0; j < aux[0].size(); j++){
-                //copia o elemento para aux
+                // copia o elemento para aux
                 aux[i][j] = points[i][j];
 
-                //rotaciona no eixo indicado
+                // rotaciona no eixo indicado
                 if(axis == true)
                     aux[i][j] = aux[i][j].spinOnX(angle);
                 else
                     aux[i][j] = aux[i][j].spinOnY(angle);
 
-                //translada o Z para calculo da perspectiva
-                //aux[i][j] = aux[i][j].translateZ(200.0f);
+                // translada o Z para calculo da perspectiva
+                // aux[i][j] = aux[i][j].translateZ(200.0f);
 
                 // faz o cálculo da perspectiva
-                //aux[i][j].x = aux[i][j].x*d/aux[i][j].z;
-                //aux[i][j].y = aux[i][j].y*d/aux[i][j].z;
+                // aux[i][j].x = aux[i][j].x*d/aux[i][j].z;
+                // aux[i][j].y = aux[i][j].y*d/aux[i][j].z;
 
                 //translada para o meio da tela
                 aux[i][j] = aux[i][j].translate(trans);
